@@ -43,7 +43,7 @@ public class ProduitServiceImpl implements IProduitService{
 			Constant.createRepertoire(produitDto.getNomCategorie());
 		}
 		StringBuilder stringBuilder = new StringBuilder();
-		String path = stringBuilder.append(Constant.uploadDirectory)
+		String path = stringBuilder.append(Constant.urlImageFront)
 					 .append("/").append(categorie.getNomCategorie())
 					 .append("/").append(produitDto.getNomImage()).toString();
 		Produit produit = new Produit();
