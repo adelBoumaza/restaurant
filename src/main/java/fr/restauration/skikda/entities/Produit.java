@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_PRODUCT")
+@Table(name="TB_PRODUIT")
 public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +24,12 @@ public class Produit {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="FK_USER")
 	private User user;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="FK_CATEGORIE")
 	private Categorie categorie;
-	@OneToOne
-	@JoinColumn(name="FK_PHOTO_PRODUIT")
-	private PhotoProduit photoProduit;
+	private String path;
+	private String nomImage;
+
 	
 	public Produit() {
 		// TODO Auto-generated constructor stub
@@ -76,13 +76,23 @@ public class Produit {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	
+	
 
-	public PhotoProduit getPhotoProduit() {
-		return photoProduit;
+	public String getPath() {
+		return path;
 	}
 
-	public void setPhotoProduit(PhotoProduit photoProduit) {
-		this.photoProduit = photoProduit;
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getNomImage() {
+		return nomImage;
+	}
+
+	public void setNomImage(String nomImage) {
+		this.nomImage = nomImage;
 	}
 
 	@Override

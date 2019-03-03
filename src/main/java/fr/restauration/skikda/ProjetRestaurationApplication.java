@@ -1,5 +1,7 @@
 package fr.restauration.skikda;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,11 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import fr.restauration.skikda.security.CustomUserDetails;
 import fr.restauration.skikda.service.impl.UserServiceImpl;
+import fr.restauration.skikda.util.Constant;
 
 @SpringBootApplication
 public class ProjetRestaurationApplication {
 
 	public static void main(String[] args) {
+		new File(Constant.uploadDirectory).mkdir();
 		SpringApplication.run(ProjetRestaurationApplication.class, args);
 	}
 	

@@ -2,6 +2,7 @@ package fr.restauration.skikda.entities;
 
 import java.util.Arrays;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,6 +25,9 @@ public class Profile {
 	private String nomRestaurant;
 	private String adresse;
 	private String numeroSiret;
+	private String nom;
+	private String prenom;
+	private String nomFichier;
 	
 	@Lob()
 	private byte[] logo;
@@ -89,6 +93,34 @@ public class Profile {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	
+
+	public String getNomFichier() {
+		return nomFichier;
+	}
+
+	public void setNomFichier(String nomFichier) {
+		this.nomFichier = nomFichier;
 	}
 
 	@Override

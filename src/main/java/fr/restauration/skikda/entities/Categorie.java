@@ -20,6 +20,15 @@ public class Categorie {
 	public Categorie() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Categorie(String nomCategorie) {
+		super();
+		this.nomCategorie = nomCategorie;
+	}
+
+
 
 	public Integer getId() {
 		return id;

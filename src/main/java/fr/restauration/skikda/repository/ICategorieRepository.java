@@ -6,4 +6,5 @@ import fr.restauration.skikda.entities.Categorie;
 
 public interface ICategorieRepository extends JpaRepository<Categorie, Integer>{
 
+	Categorie findByNomCategorie(String nomCategorie);
 }
