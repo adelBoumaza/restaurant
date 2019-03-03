@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Constant {
 
-	public static String uploadDirectory = "../../../assets/imagesProduit";
+	public static String uploadDirectory = "/var/www/html/assets/images/imageProduit";
 	
 	public  static void createRepertoire(String nomRepertoire) {
 		new File(Constant.uploadDirectory.concat("/").concat(nomRepertoire)).mkdir();
