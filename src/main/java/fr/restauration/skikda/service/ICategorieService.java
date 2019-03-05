@@ -10,4 +10,6 @@ public interface ICategorieService {
 	Categorie ajouterCategorie(Categorie categorie);
 	
 	List<CategorieDto> findAll();
+	
+	List<CategorieDto> findAllCategorieByUser(Integer idUser);
 }

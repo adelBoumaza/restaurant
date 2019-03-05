@@ -13,14 +13,18 @@ import org.springframework.web.multipart.MultipartFile;
 public class Constant {
 
 	public static String uploadDirectory = "/var/www/html/assets/images/imageProduit";
+	public static String uploaDirectoryDev = System.getProperty("user.dir")+"/images";
 	public static String urlImageFront   = "../../../assets/images/imageProduit";
 	
-	public  static void createRepertoire(String nomRepertoire) {
-		new File(Constant.uploadDirectory.concat("/").concat(nomRepertoire)).mkdir();
+	public  static void createRepertoire(String nomRepertoire,Integer idUser) {
+		new File(Constant.uploaDirectoryDev.concat("/User")+"/"+idUser+"/"
+				.concat(nomRepertoire))
+		.mkdirs();
 	}
 	
-	public static Map<String, String> chargerLimageDansLeServeur(MultipartFile file, String nomCategorie) throws IOException {
-		Path fileNamePath = Paths.get(Constant.uploadDirectory.concat("/").concat(nomCategorie), file.getOriginalFilename());
+	public static Map<String, String> chargerLimageDansLeServeur(MultipartFile file, String nomCategorie,Integer idUser) throws IOException {
+		Path fileNamePath = Paths.get(Constant.uploadDirectory.concat("/User")+"/"+idUser+"/"
+				.concat(nomCategorie), file.getOriginalFilename());
 		Files.write(fileNamePath, file.getBytes());
 		String fileName = file.getOriginalFilename();
 		Map<String, String> pathAndFileNAme = new HashMap<>();

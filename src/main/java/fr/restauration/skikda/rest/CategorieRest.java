@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,10 @@ public class CategorieRest {
 	@GetMapping(value="/categorie/findAll")
 	public List<CategorieDto> findAll() {
 		return iCategorieService.findAll();
+	}
+	
+	@GetMapping(value="/categorie/findAll/User/{idUser}")
+	public List<CategorieDto> findAllCategorieByUser(@PathVariable(value="idUser") Integer idUser) {
+		return iCategorieService.findAllCategorieByUser(idUser);
 	}
 }

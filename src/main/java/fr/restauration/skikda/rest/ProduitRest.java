@@ -34,11 +34,12 @@ public class ProduitRest {
 	@Autowired
 	private IProduitService iProduitService;
 	
-	@PostMapping(value="/produit/telecharger/{nomCategorie}")
+	@PostMapping(value="/produit/telecharger/{nomCategorie}/{idUser}")
 	public ResponseEntity<String> uploadImages(@RequestParam("file") MultipartFile file,
-			@PathVariable ("nomCategorie") String nomCategorie) throws IOException {
+			@PathVariable ("nomCategorie") String nomCategorie,
+			@PathVariable ("idUser") Integer idUser) throws IOException {
 		
-		ProduitDto produit = iProduitService.upladeImage(file, nomCategorie);
+		ProduitDto produit = iProduitService.upladeImage(file, nomCategorie,idUser);
 		return new ResponseEntity<>("l/'imaage a bien été chargé dans le serveur"
 		+"[pathFile]="+produit.getPath()  + " [fileNAme]="+produit.getNomImage(),HttpStatus.OK);	
 	}

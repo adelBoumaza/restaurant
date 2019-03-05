@@ -1,6 +1,5 @@
 package fr.restauration.skikda.service.impl;
 
-import java.io.Console;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ import fr.restauration.skikda.repository.IProduitRepository;
 import fr.restauration.skikda.service.IProduitService;
 import fr.restauration.skikda.util.Constant;
 @Service
-@Transactional(readOnly = false)
+@Transactional(readOnly = true)
 public class ProduitServiceImpl implements IProduitService{
 
 	@Autowired
@@ -37,13 +36,14 @@ public class ProduitServiceImpl implements IProduitService{
 		User user = new User();
 		user.setId(produitDto.getIdUser());
 		Categorie categorie = 
-					Optional.ofNullable(iCategorieRepository.findByNomCategorie(produitDto.getNomCategorie())).orElse(null); 			
+					Optional.ofNullable(iCategorieRepository.findByNomCategorieAndUser(produitDto.getIdUser(),produitDto.getNomCategorie())).orElse(null); 			
 		if(categorie == null) {
-			categorie = iCategorieRepository.save(new Categorie(produitDto.getNomCategorie()));
-			Constant.createRepertoire(produitDto.getNomCategorie());
+			categorie = iCategorieRepository.save(new Categorie(produitDto.getNomCategorie(),user));
+			Constant.createRepertoire(produitDto.getNomCategorie(),produitDto.getIdUser());
 		}
 		StringBuilder stringBuilder = new StringBuilder();
 		String path = stringBuilder.append(Constant.urlImageFront)
+					 .append("/User").append("/"+produitDto.getIdUser())
 					 .append("/").append(categorie.getNomCategorie())
 					 .append("/").append(produitDto.getNomImage()).toString();
 		Produit produit = new Produit();
@@ -58,9 +58,9 @@ public class ProduitServiceImpl implements IProduitService{
 	}
 
 	@Override
-	public ProduitDto upladeImage(MultipartFile file, String nomCategorie) throws IOException {
+	public ProduitDto upladeImage(MultipartFile file, String nomCategorie,Integer idUser) throws IOException {
 		ProduitDto produitDto = new ProduitDto();
-		Map<String, String> map =  Constant.chargerLimageDansLeServeur(file, nomCategorie);
+		Map<String, String> map =  Constant.chargerLimageDansLeServeur(file, nomCategorie,idUser);
 		String pathFile = map.keySet().stream().map(path -> path).collect(Collectors.joining());
 		String nameFile = map.values().stream().map(path -> path).collect(Collectors.joining());
 		produitDto.setNomImage(nameFile);
@@ -69,7 +69,6 @@ public class ProduitServiceImpl implements IProduitService{
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<CommandeDto> getAllProduitByUser(Integer id) {
 		List<Produit> data = iProduitRepository.getAllProduit(id);
 		List<CommandeDto> commandeDtos = Optional.

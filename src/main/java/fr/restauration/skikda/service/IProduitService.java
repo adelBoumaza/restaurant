@@ -12,7 +12,7 @@ public interface IProduitService {
 
 	ProduitDto ajouterUnProduit(ProduitDto produitDto);
 	
-	ProduitDto upladeImage(MultipartFile file,String nomCategorie) throws IOException;
+	ProduitDto upladeImage(MultipartFile file,String nomCategorie,Integer idUser) throws IOException;
 	
 	List<CommandeDto> getAllProduitByUser(Integer id);
 

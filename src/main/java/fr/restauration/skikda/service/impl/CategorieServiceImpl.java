@@ -7,17 +7,17 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.restauration.skikda.dto.CategorieDto;
 import fr.restauration.skikda.entities.Categorie;
 import fr.restauration.skikda.repository.ICategorieRepository;
 import fr.restauration.skikda.service.ICategorieService;
 
-@Transactional
+@Transactional(readOnly = true)
 @Service
 public class CategorieServiceImpl  implements ICategorieService{
 	
@@ -25,6 +25,7 @@ public class CategorieServiceImpl  implements ICategorieService{
 	private ICategorieRepository iCategorieRepository;
 
 	@Override
+	@Transactional(readOnly = false)
 	public Categorie ajouterCategorie(Categorie categorie) {
 		
 		return iCategorieRepository.save(categorie);
@@ -32,7 +33,16 @@ public class CategorieServiceImpl  implements ICategorieService{
 
 	@Override
 	public List<CategorieDto> findAll() {
-		List<Categorie> categories = iCategorieRepository.findAll();
+	    return categorieTOcategorieDto(iCategorieRepository.findAll());
+	    		
+	}
+
+	@Override
+	public List<CategorieDto> findAllCategorieByUser(Integer idUser) {
+		return categorieTOcategorieDto(iCategorieRepository.findAllCategorieByUser(idUser));	
+	}
+	
+	private List<CategorieDto> categorieTOcategorieDto(List<Categorie> categories) {
 		List<CategorieDto> dtos = categories.
 				stream().map(c -> new CategorieDto(c.getId(), c.getNomCategorie(), false))
 				.collect(Collectors.toList());
@@ -40,9 +50,7 @@ public class CategorieServiceImpl  implements ICategorieService{
 		if(!dtos.isEmpty())	{
 			dtos.stream().findFirst().get().setActive(true);
 		}
-				
-	    return dtos;
-	    		
+		return dtos;
 	}
 
 	
