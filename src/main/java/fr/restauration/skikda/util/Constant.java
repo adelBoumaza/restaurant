@@ -17,7 +17,7 @@ public class Constant {
 	public static String urlImageFront   = "../../../assets/images/imageProduit";
 	
 	public  static void createRepertoire(String nomRepertoire,Integer idUser) {
-		new File(Constant.uploaDirectoryDev.concat("/User")+"/"+idUser+"/"
+		new File(Constant.uploadDirectory.concat("/User")+"/"+idUser+"/"
 				.concat(nomRepertoire))
 		.mkdirs();
 	}
