@@ -8,13 +8,18 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 
 public class Constant {
 
-	public static String uploadDirectory = "/var/www/html/assets/images/imageProduit";
-	public static String uploaDirectoryDev = System.getProperty("user.dir")+"/images";
-	public static String urlImageFront   = "../../../assets/images/imageProduit";
+	//public static String uploadDirectory = "/var/www/html/assets/images/imageProduit";
+	public static String uploadDirectory = System.getProperty("user.dir")+"/images";
+	public static final String urlImageFront   = "../../../assets/images/imageProduit";
+	
 	
 	public  static void createRepertoire(String nomRepertoire,Integer idUser) {
 		new File(Constant.uploadDirectory.concat("/User")+"/"+idUser+"/"

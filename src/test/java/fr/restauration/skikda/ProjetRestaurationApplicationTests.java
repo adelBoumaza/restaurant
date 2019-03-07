@@ -24,6 +24,7 @@ import fr.restauration.skikda.service.ICategorieService;
 import fr.restauration.skikda.service.IProduitService;
 import fr.restauration.skikda.service.IProfileService;
 import fr.restauration.skikda.service.IUserService;
+import fr.restauration.skikda.util.Constant;
 import junit.framework.Assert;
 
 
@@ -101,8 +102,14 @@ public class ProjetRestaurationApplicationTests {
 	}
 	
 	@Test
+	@Ignore
 	public void selectAllProduit() {
 		System.out.println(iProduitService.getAllProduitByUser(7));
+	}
+	
+	@Test
+	public void variableStatic() {
+		System.out.println(Constant.uploadDirectory);
 	}
 
 }

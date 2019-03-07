@@ -12,13 +12,14 @@ import fr.restauration.skikda.util.Constant;
 public class Driver {
 
 	public static void main(String[] args) throws IOException {
-		File[] fileList = getFileList(Paths.get(Constant.uploadDirectory).toString());
+		/*File[] fileList = getFileList(Paths.get(Constant.uploadDirectory).toString());
 
         for(File file : fileList) {
             System.out.println(file.getName());
             byte[] bFile = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
             System.out.println(bFile);
-        }
+        }*/
+		
 	}
 	
 	private static File[] getFileList(String dirPath) {
