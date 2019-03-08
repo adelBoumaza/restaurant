@@ -69,8 +69,8 @@ public class ProduitServiceImpl implements IProduitService{
 	}
 
 	@Override
-	public List<CommandeDto> getAllProduitByUser(Integer id) {
-		List<Produit> data = iProduitRepository.getAllProduit(id);
+	public List<CommandeDto> getAllProduitByUser(Integer id,Integer idCategorie) {
+		List<Produit> data = iProduitRepository.getAllProduit(id,idCategorie);
 		List<CommandeDto> commandeDtos = Optional.
 				ofNullable(data)
 				.get()

@@ -104,7 +104,7 @@ public class ProjetRestaurationApplicationTests {
 	@Test
 	@Ignore
 	public void selectAllProduit() {
-		System.out.println(iProduitService.getAllProduitByUser(7));
+		System.out.println(iProduitService.getAllProduitByUser(7,1));
 	}
 	
 	@Test

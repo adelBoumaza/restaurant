@@ -48,9 +48,9 @@ public class ProduitRest {
 	public ProduitDto ajouterUnProduit(@RequestBody ProduitDto produitDto) {
 		return iProduitService.ajouterUnProduit(produitDto);
 	}
-	@GetMapping(value="/produit/getAllProduitByUser/{idUser}")
-	public List<CommandeDto> getAllProduitByUser(@PathVariable("idUser") Integer idUser) {
-		return iProduitService.getAllProduitByUser(idUser);
+	@GetMapping(value="/produit/getAllProduitByUser/{idUser}/{idCategorie}")
+	public List<CommandeDto> getAllProduitByUser(@PathVariable("idUser") Integer idUser,@PathVariable("idCategorie") Integer idCategorie) {
+		return iProduitService.getAllProduitByUser(idUser,idCategorie);
 	}
 
 	

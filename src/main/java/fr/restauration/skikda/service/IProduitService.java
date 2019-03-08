@@ -14,6 +14,6 @@ public interface IProduitService {
 	
 	ProduitDto upladeImage(MultipartFile file,String nomCategorie,Integer idUser) throws IOException;
 	
-	List<CommandeDto> getAllProduitByUser(Integer id);
+	List<CommandeDto> getAllProduitByUser(Integer id,Integer idCategorie);
 
 }
