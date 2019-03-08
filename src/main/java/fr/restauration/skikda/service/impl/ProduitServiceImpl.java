@@ -1,5 +1,6 @@
 package fr.restauration.skikda.service.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,10 @@ public class ProduitServiceImpl implements IProduitService{
 					 .append("/User").append("/"+produitDto.getIdUser())
 					 .append("/").append(categorie.getNomCategorie())
 					 .append("/").append(produitDto.getNomImage()).toString();
+		
+		if(iProduitRepository.findByPath(path) != null) {
+			throw new RuntimeException("La photo de produit existe déja dans le serveur,Merci de renommer le nom de produit");
+		}
 		Produit produit = new Produit();
 		produit.setNomImage(produitDto.getNomImage());
 		produit.setNomProduit(produitDto.getNomProduit());
