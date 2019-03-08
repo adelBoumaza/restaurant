@@ -31,7 +31,7 @@ public class Commande {
 	@JoinColumn(name="FK_USER")
 	private User user;
 	@OneToMany
-	@JoinTable(name="FK_PRODUIT")
+	@JoinTable(name="TB_PRODUIT_COMMANDE")
 	private List<Produit> produits;
 	private boolean actived;
 	private Date dateDeCreation;
