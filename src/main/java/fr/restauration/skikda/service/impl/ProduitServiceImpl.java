@@ -1,6 +1,5 @@
 package fr.restauration.skikda.service.impl;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import fr.restauration.skikda.dto.CommandeDto;
+import fr.restauration.skikda.dto.DisplayProduitDto;
 import fr.restauration.skikda.dto.ProduitDto;
 import fr.restauration.skikda.entities.Categorie;
 import fr.restauration.skikda.entities.Produit;
@@ -74,18 +73,18 @@ public class ProduitServiceImpl implements IProduitService{
 	}
 
 	@Override
-	public List<CommandeDto> getAllProduitByUser(Integer id,Integer idCategorie) {
+	public List<DisplayProduitDto> getAllProduitByUser(Integer id,Integer idCategorie) {
 		List<Produit> data = iProduitRepository.getAllProduit(id,idCategorie);
-		List<CommandeDto> commandeDtos = Optional.
+		List<DisplayProduitDto> dtos = Optional.
 				ofNullable(data)
 				.get()
 				.stream()
-				.map(produit -> new CommandeDto(produit.getPath(), produit.getPrixInitialProduct(),
+				.map(produit -> new DisplayProduitDto(produit.getPath(), produit.getPrixInitialProduct(),
 								produit.getPrixInitialProduct(), produit.getId(),
 								produit.getCategorie().getId(), 1, produit.getNomProduit()))
 				.collect(Collectors.toList());
 				
-		return commandeDtos;
+		return dtos;
 	}
 	
 

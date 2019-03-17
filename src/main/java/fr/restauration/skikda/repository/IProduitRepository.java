@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.multipart.MultipartFile;
 
-import fr.restauration.skikda.dto.CommandeDto;
 import fr.restauration.skikda.entities.Produit;
 
 public interface IProduitRepository extends JpaRepository<Produit, Integer>{

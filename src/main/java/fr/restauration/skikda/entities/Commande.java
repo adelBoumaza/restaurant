@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,20 +28,12 @@ public class Commande {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PK_ID")
 	private Integer id;
-	private String numeroTicket;
-	@Column(name="MONT_TOT_HT", precision = 20, scale = 2)
-	private BigDecimal totalCommandeHT;
-	@Column(name="MONT_TOT_TTC", precision = 20, scale = 2)
-	private BigDecimal totalCommandeTTC;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="FK_USER")
 	private User user;
-	@OneToMany
-	@JoinTable(name="TB_PRODUIT_COMMANDE")
-	private List<Produit> produits;
 	private boolean actived;
 	private Date dateDeCreation;
-	private String statut = "En cours de Préparation";
+	private String statut;
 	
 	public Commande() {
 		
@@ -54,29 +47,8 @@ public class Commande {
 		this.id = id;
 	}
 
-	public String getNumeroTicket() {
-		return numeroTicket;
-	}
-
-	public void setNumeroTicket(String numeroTicket) {
-		this.numeroTicket = numeroTicket;
-	}
-
-	public BigDecimal getTotalCommandeHT() {
-		return totalCommandeHT;
-	}
-
-	public void setTotalCommandeHT(BigDecimal totalCommandeHT) {
-		this.totalCommandeHT = totalCommandeHT;
-	}
-
-	public BigDecimal getTotalCommandeTTC() {
-		return totalCommandeTTC;
-	}
-
-	public void setTotalCommandeTTC(BigDecimal totalCommandeTTC) {
-		this.totalCommandeTTC = totalCommandeTTC;
-	}
+	
+	
 
 	@JsonIgnore
 	public User getUser() {
@@ -88,14 +60,7 @@ public class Commande {
 		this.user = user;
 	}
 
-	@JsonIgnore
-	public List<Produit> getProduits() {
-		return produits;
-	}
-	@JsonSetter
-	public void setProduits(List<Produit> produits) {
-		this.produits = produits;
-	}
+	
 
 	public boolean isActived() {
 		return actived;
@@ -120,17 +85,6 @@ public class Commande {
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
-
-	@Override
-	public String toString() {
-		return "Commande [id=" + id + ", numeroTicket=" + numeroTicket + ", totalCommandeHT=" + totalCommandeHT
-				+ ", totalCommandeTTC=" + totalCommandeTTC + ", actived=" + actived + ", dateDeCreation="
-				+ dateDeCreation + ", statut=" + statut + "]";
-	}
-	
-	
-	
-	
 	
 	
 }

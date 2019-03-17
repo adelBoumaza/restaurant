@@ -36,5 +36,23 @@ public class Constant {
 		pathAndFileNAme.put(fileNamePath.toString(), fileName);
 		return pathAndFileNAme;
 	}
+	
+	public static String incrementeTicket(String numerTicket) {
+		Integer numeroTicketInteger = Integer.parseInt(numerTicket) + 1;
+		String value = "";
+		if(numeroTicketInteger < 10) {
+	       return  value = "000"+numeroTicketInteger;
+	    }
+	    if(numeroTicketInteger >= 10 && numeroTicketInteger <100 ) {
+	       return  value = "00"+numeroTicketInteger;
+	    } 
+	    if(numeroTicketInteger >= 100 && numeroTicketInteger < 1000) {
+	       return value = "0"+numeroTicketInteger;
+	    }
+	    if(numeroTicketInteger >= 1000) {
+	       return value = ""+numeroTicketInteger;
+	    }
+	    return value;
+}
 
 }

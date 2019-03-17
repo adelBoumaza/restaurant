@@ -1,94 +1,79 @@
 package fr.restauration.skikda.dto;
 
-import java.math.BigDecimal;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommandeDto {
-
-	private String pathImage;
-	private BigDecimal prixToTal;
-	private BigDecimal prixInitial;
-	private Integer idProduit;
-	private Integer idCategorie;
-	private Integer quantite;
-	private String libelle;
+	private Integer id;
+	private Integer idUser;
+	private boolean actived;
+	private String dateDeCreation;
+	private String statut;
+	private TicketDto ticketDto = new TicketDto ();
+	private List<InformationTicketDto> informationTicketDtos = new ArrayList<>();
 	
 	public CommandeDto() {
-		// TODO Auto-generated constructor stub
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	
-	
 
-	public CommandeDto(String pathImage, BigDecimal prixToTal, BigDecimal prixInitial, Integer idProduit,
-			Integer idCategorie, Integer quantite, String libelle) {
-		super();
-		this.pathImage = pathImage;
-		this.prixToTal = prixToTal;
-		this.prixInitial = prixInitial;
-		this.idProduit = idProduit;
-		this.idCategorie = idCategorie;
-		this.quantite = quantite;
-		this.libelle = libelle;
+	public Integer getIdUser() {
+		return idUser;
 	}
 
-
-
-	public String getPathImage() {
-		return pathImage;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
-	public void setPathImage(String pathImage) {
-		this.pathImage = pathImage;
+	public boolean isActived() {
+		return actived;
 	}
 
-	public BigDecimal getPrixToTal() {
-		return prixToTal;
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 
-	public void setPrixToTal(BigDecimal prixToTal) {
-		this.prixToTal = prixToTal;
+	public String getDateDeCreation() {
+		return dateDeCreation;
 	}
 
-	public BigDecimal getPrixInitial() {
-		return prixInitial;
+	public void setDateDeCreation(String dateDeCreation) {
+		this.dateDeCreation = dateDeCreation;
 	}
 
-	public void setPrixInitial(BigDecimal prixInitial) {
-		this.prixInitial = prixInitial;
+	public String getStatut() {
+		return statut;
 	}
 
-	public Integer getIdProduit() {
-		return idProduit;
+	public void setStatut(String statut) {
+		this.statut = statut;
 	}
 
-	public void setIdProduit(Integer idProduit) {
-		this.idProduit = idProduit;
+	public TicketDto getTicketDto() {
+		return ticketDto;
 	}
 
-	public Integer getIdCategorie() {
-		return idCategorie;
+	public void setTicketDto(TicketDto ticketDto) {
+		this.ticketDto = ticketDto;
 	}
 
-	public void setIdCategorie(Integer idCategorie) {
-		this.idCategorie = idCategorie;
+	public List<InformationTicketDto> getInformationTicketDtos() {
+		return informationTicketDtos;
 	}
 
-	public Integer getQuantite() {
-		return quantite;
+	public void setInformationTicketDtos(List<InformationTicketDto> informationTicketDtos) {
+		this.informationTicketDtos = informationTicketDtos;
 	}
-
-	public void setQuantite(Integer quantite) {
-		this.quantite = quantite;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	
-	
 	
 	
 }

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import fr.restauration.skikda.dto.CommandeDto;
+import fr.restauration.skikda.dto.DisplayProduitDto;
 import fr.restauration.skikda.dto.ProduitDto;
 import fr.restauration.skikda.entities.Produit;
 import fr.restauration.skikda.service.IProduitService;
@@ -49,7 +49,7 @@ public class ProduitRest {
 		return iProduitService.ajouterUnProduit(produitDto);
 	}
 	@GetMapping(value="/produit/getAllProduitByUser/{idUser}/{idCategorie}")
-	public List<CommandeDto> getAllProduitByUser(@PathVariable("idUser") Integer idUser,@PathVariable("idCategorie") Integer idCategorie) {
+	public List<DisplayProduitDto> getAllProduitByUser(@PathVariable("idUser") Integer idUser,@PathVariable("idCategorie") Integer idCategorie) {
 		return iProduitService.getAllProduitByUser(idUser,idCategorie);
 	}
 

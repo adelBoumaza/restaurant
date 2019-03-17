@@ -31,6 +31,12 @@ public class Produit {
 	private String nomImage;
 
 	
+	
+	public Produit(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Produit() {
 		// TODO Auto-generated constructor stub
 	}
