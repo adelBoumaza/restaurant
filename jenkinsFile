@@ -19,12 +19,22 @@ pipeline {
                 }
             }
 
-            stage('Depoly stage') {
+            stage('install stage') {
                  steps {
                     withMaven(maven:'apache-maven-3.5.3') {
                       sh 'mvn install'
                     }
                   }
+            }
+            
+            stage('Deploy'){
+                steps{
+                   script{
+                            withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                                   sh "nohup java -jar 	project-restauration-0.0.1-SNAPSHOT.jar &"
+                            }
+                   }
+                }
             }
     }
 }
