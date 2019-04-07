@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 public class Constant {
-        //
+        
 	public static String uploadDirectory = "/var/www/html/assets/images/imageProduit";
 	//public static String uploadDirectory = System.getProperty("user.dir")+"/images";
 	public static final String urlImageFront   = "../../../assets/images/imageProduit";
