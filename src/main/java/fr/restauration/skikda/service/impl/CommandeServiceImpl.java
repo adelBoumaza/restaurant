@@ -76,8 +76,8 @@ public class CommandeServiceImpl implements ICommandeService{
 
 	@Override
 	public List<SocketDataDto> getLastTicketCreatedByUser(Integer idUser) {
-		List<Object[]> dataSendigSocket = iTicketRepository.getLastTicketCreatedByUser(idUser);
-		return Optional.ofNullable(dataSendigSocket)
+		// commentaire pour tester la PIC
+		return Optional.ofNullable(iTicketRepository.getLastTicketCreatedByUser(idUser))
 				.orElse(Collections.emptyList())
 				.stream()
 				.map(data -> new SocketDataDto((String)data[0], (String)data[1], (String)data[2]))
