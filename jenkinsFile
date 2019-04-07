@@ -22,7 +22,7 @@ pipeline {
             stage('Depoly stage') {
                  steps {
                     withMaven(maven:'apache-maven-3.5.3') {
-                      sh 'mvn deploy'
+                      sh 'mvn install'
                     }
                   }
             }
