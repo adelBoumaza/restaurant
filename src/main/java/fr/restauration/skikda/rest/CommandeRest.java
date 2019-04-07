@@ -3,6 +3,7 @@ package fr.restauration.skikda.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,5 +23,10 @@ public class CommandeRest {
 	@PostMapping(value="/commande/saveOrUpdateCommande/{save}")
 	public List<SocketDataDto> saveOrUpdateCommande(@RequestBody CommandeDto commandeDto,@PathVariable boolean save) {
 		return iCommandeService.saveOrUpdateCommande(commandeDto, save);
+	}
+	
+	@GetMapping(value="/commande/getLastTicketCreatedByUser/{idUser}")
+	public List<SocketDataDto> getLastTicketCreatedByUser(@PathVariable Integer idUser) {
+		return iCommandeService.getLastTicketCreatedByUser(idUser);
 	}
 }

@@ -3,6 +3,7 @@ package fr.restauration.skikda.service.impl;
 
 
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -77,7 +78,10 @@ public class CommandeServiceImpl implements ICommandeService{
 	public List<SocketDataDto> getLastTicketCreatedByUser(Integer idUser) {
 		List<Object[]> dataSendigSocket = iTicketRepository.getLastTicketCreatedByUser(idUser);
 		return Optional.ofNullable(dataSendigSocket)
-				.get().stream().map(data -> new SocketDataDto((String)data[0], (String)data[1], (String)data[2])).collect(Collectors.toList());
+				.orElse(Collections.emptyList())
+				.stream()
+				.map(data -> new SocketDataDto((String)data[0], (String)data[1], (String)data[2]))
+				.collect(Collectors.toList());
 	}
 
 }
