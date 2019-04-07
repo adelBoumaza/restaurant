@@ -2,28 +2,29 @@
 pipeline {
     agent any
     stages {
-       steps {
            stage('Compilation Stage') {
-                withMaven(maven:'apache-maven-3.5.3') {
-                  sh 'mvn clean compile'
+                steps {
+                    withMaven(maven:'apache-maven-3.5.3') {
+                      sh 'mvn clean compile'
+                    }
                 }
             }
-       }
         
-        steps {
+        
             stage('Test Stage') {
-                withMaven(maven:'apache-maven-3.5.3') {
-                  sh 'mvn test'
+                steps {
+                    withMaven(maven:'apache-maven-3.5.3') {
+                      sh 'mvn test'
+                    }
                 }
             }
-        }
-        
-        steps {
+
             stage('Depoly stage') {
-                withMaven(maven:'apache-maven-3.5.3') {
-                  sh 'mvn deploy'
-                }
+                 steps {
+                    withMaven(maven:'apache-maven-3.5.3') {
+                      sh 'mvn deploy'
+                    }
+                  }
             }
-        }
     }
 }
